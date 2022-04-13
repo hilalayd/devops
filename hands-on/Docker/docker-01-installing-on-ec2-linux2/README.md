@@ -198,8 +198,7 @@ Resources:
       SecurityGroupIds:
         - !GetAtt DockerMachineSecurityGroup.GroupId
       Tags:
-        -
-          Key: Name
+        - Key: Name
           Value: !Sub Docker Machine of ${AWS::StackName}
       UserData:
         Fn::Base64: |
