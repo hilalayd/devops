@@ -15,7 +15,7 @@ provider "aws" {
     region = "us-east-1"
 }
 provider "github" {
-    token = "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"
+    token = "xxxxxxxxxxxxxxxxxxxxxx"
 }
 resource "github_repository" "myrepo" {
     name = "bookstore-repo"
