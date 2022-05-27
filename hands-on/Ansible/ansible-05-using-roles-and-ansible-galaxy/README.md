@@ -49,7 +49,7 @@ $ ansible --version
 - Run the command below to transfer your pem key to your Ansible Controller Node.
 
 ```bash
-scp -i ~/.ssh/walter-pem.pem ~/.ssh/walter-pem.pem ec2-user@54.197.164.241:/home/ec2-user
+scp -i ~/.ssh/firstkey.pem ~/.ssh/firstkey.pem ec2-user@54.197.164.241:/home/ec2-user
 ```
 
 
