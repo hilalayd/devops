@@ -108,7 +108,7 @@ ssh -i .ssh/xxxxx.pem ec2-user@ec2-3-133-106-98.us-east-2.compute.amazonaws.com
 ```bash
 sudo su
 
-aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin xxxxxxxxxx.dkr.ecr.us-east-1.amazonaws.com
+aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 593737455453.dkr.ecr.us-east-1.amazonaws.com
 ```
 
 ## Part 4 - Managing Docker Images using AWS ECR as Repository
@@ -189,20 +189,20 @@ docker rm todo
 - Tag the image to push it to ECR repository.
 
 ```bash
-docker tag todo-app:latest xxxxxxxxxxx.dkr.ecr.us-east-1.amazonaws.com/student1-repo/todo-app:latest
+docker tag todo-app:latest 593737455453.dkr.ecr.us-east-1.amazonaws.com/student1-repo/todo-app:latest
 ```
 
 - Push the image to your ECR repository and show the pushed image on AWS ECR Console.
 
 ```bash
-docker push xxxxxxxxxxx.dkr.ecr.us-east-1.amazonaws.com/student1-repo/todo-app:latest
+docker push 593737455453.dkr.ecr.us-east-1.amazonaws.com/student1-repo/todo-app:latest
 ```
 
 - Create an container from image located ECR
 
 ```bash
-docker pull xxxxxxxxxxxxx.dkr.ecr.us-east-1.amazonaws.com/student1-repo/todo-app:latest
-docker run --name todo -dp 80:3000 xxxxxxxxxxxxxx.dkr.ecr.us-east-1.amazonaws.com/student1-repo/todo-app:latest
+docker pull 593737455453.dkr.ecr.us-east-1.amazonaws.com/student1-repo/todo-app:latest
+docker run --name todo -dp 80:3000 593737455453.dkr.ecr.us-east-1.amazonaws.com/student1-repo/todo-app:latest
 ```
 - Stop and remove container
 
@@ -222,20 +222,20 @@ docker build -t todo-app:latest .
 - Tag the image to push it to ECR repository.
 
 ```bash
-docker tag todo-app:latest xxxxxxxxxxx.dkr.ecr.us-east-1.amazonaws.com/student1-repo/todo-app:latest
+docker tag todo-app:latest 593737455453.dkr.ecr.us-east-1.amazonaws.com/student1-repo/todo-app:latest
 ```
 
 - Push the image to your ECR repository and show the pushed image on AWS ECR Console.
 
 ```bash
-docker push xxxxxxxxxxx.dkr.ecr.us-east-1.amazonaws.com/student1-repo/todo-app:latest
+docker push 593737455453.dkr.ecr.us-east-1.amazonaws.com/student1-repo/todo-app:latest
 ```
 - Show the repository . Immutable disable.
 
 - Create an container from image located ECR
 
 ```bash
-docker run --name todo-v1 -dp 80:3000 xxxxxxxxxxxxxx.dkr.ecr.us-east-1.amazonaws.com/student1-repo/todo-app:latest
+docker run --name todo-v1 -dp 80:3000 593737455453.dkr.ecr.us-east-1.amazonaws.com/student1-repo/todo-app:latest
 ```
 - Show the changes in the browser 
 
@@ -259,8 +259,8 @@ aws ecr create-repository \
 - Tag and push the image to your `student2-repo/todo-app` repository and show the pushed image on AWS ECR Console.
 
 ```bash
-docker tag todo-app:latest xxxxxxxxxx.dkr.ecr.us-east-1.amazonaws.com/student2-repo/todo-app:latest
-docker push xxxxxxxxxx.dkr.ecr.us-east-1.amazonaws.com/student2-repo/todo-app:latest
+docker tag todo-app:latest 593737455453.dkr.ecr.us-east-1.amazonaws.com/student2-repo/todo-app:latest
+docker push 593737455453.dkr.ecr.us-east-1.amazonaws.com/student2-repo/todo-app:latest
 ```
 
 - Delete the all local images of `todo-app`.
@@ -279,14 +279,14 @@ docker image ls
 - Pull the image from your `student2-repo/todo-app` repository  to the local.
 
 ```bash
-docker pull xxxxxxxxxxxxx.dkr.ecr.us-east-1.amazonaws.com/student2-repo/todo-app:latest
-docker run -dp 80:3000 xxxxxxxxxxxxxx.dkr.ecr.us-east-1.amazonaws.com/student2-repo/todo-app:latest
+docker pull 593737455453.dkr.ecr.us-east-1.amazonaws.com/student2-repo/todo-app:latest
+docker run -dp 80:3000 593737455453.dkr.ecr.us-east-1.amazonaws.com/student2-repo/todo-app:latest
 ```
 
 - Or directly run the `todo-app` from the ECR repo.
 
 ```bash
-docker run -dp 80:3000 xxxxxxxxxxxxx.dkr.ecr.us-east-1.amazonaws.com/student2-repo/todo-app:latest
+docker run -dp 80:3000 593737455453.dkr.ecr.us-east-1.amazonaws.com/student2-repo/todo-app:latest
 ```
 
 - Check if the To-Do App is running by entering `http://<ec2-host-name>` in a browser.
@@ -296,7 +296,8 @@ docker run -dp 80:3000 xxxxxxxxxxxxx.dkr.ecr.us-east-1.amazonaws.com/student2-re
 ```bash
 aws ecr batch-delete-image \
       --repository-name student2-repo/todo-app \
-      --image-ids imageTag=latest
+      --image-ids imageTag=latest \
+      --region=us-east-1
 ```
 
 - Delete the ECR repository  `student2-repo/todo-app` from AWS CLI.
@@ -304,7 +305,8 @@ aws ecr batch-delete-image \
 ```bash
 aws ecr delete-repository \
       --repository-name student2-repo/todo-app \
-      --force
+      --force \
+      --region=us-east-1
 ```
 
 - Delete the image and repository of `student1-repo/todo-app` from AWS ECR Console.
