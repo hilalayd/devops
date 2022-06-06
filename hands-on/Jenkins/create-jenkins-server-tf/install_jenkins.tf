@@ -28,18 +28,18 @@ resource "aws_instance" "tf-jenkins-server" {
 
 }
 
-resource "null_resource" "forpasswd" {
-  depends_on = [aws_instance.tf-jenkins-server]
+# resource "null_resource" "forpasswd" {
+#   depends_on = [aws_instance.tf-jenkins-server]
 
-  provisioner "local-exec" {
-    command = "sleep 3m"
-  }
+#   provisioner "local-exec" {
+#     command = "sleep 3m"
+#   }
 
-  # Do not forget to define your key file path correctly!
-  provisioner "local-exec" {
-    command = "ssh -i ~/.ssh/${var.mykey}.pem -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no ec2-user@${aws_instance.tf-jenkins-server.public_ip} 'sudo cat /var/lib/jenkins/secrets/initialAdminPassword' > initialpasswd.txt"
-  }
-}
+#   # Do not forget to define your key file path correctly!
+#   provisioner "local-exec" {
+#     command = "ssh -i ~/.ssh/${var.mykey}.pem -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no ec2-user@${aws_instance.tf-jenkins-server.public_ip} 'sudo cat /var/lib/jenkins/secrets/initialAdminPassword' > initialpasswd.txt"
+#   }
+# }
 
 resource "aws_security_group" "tf-jenkins-sec-gr" {
   name = var.secgrname
