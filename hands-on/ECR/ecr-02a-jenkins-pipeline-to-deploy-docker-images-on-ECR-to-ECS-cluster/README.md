@@ -261,13 +261,13 @@ git push
 - if you want to manually run 
 
 ```bash
-aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin <aws_account_id>.dkr.ecr.us-east-1.amazonaws.com
+aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 593737455453.dkr.ecr.us-east-1.amazonaws.com
 ```
 
 - Then run the image
 
 ```bash
-docker run --name todo -dp 80:3000 <aws_account_id>.dkr.ecr.us-east-1.amazonaws.com/clarusway/to-do-app:latest
+docker run --name todo -dp 80:3000 593737455453.dkr.ecr.us-east-1.amazonaws.com/clarusway/to-do-app:latest
 ```
 - Delete the container 
 
@@ -295,7 +295,7 @@ Press "i" to edit
   pipeline {
     agent any
     environment {
-        ECR_REGISTRY = "<aws_account_id>.dkr.ecr.us-east-1.amazonaws.com"
+        ECR_REGISTRY = "593737455453.dkr.ecr.us-east-1.amazonaws.com"
         APP_REPO_NAME= "clarusway/to-do-app"
         PATH="/usr/local/bin/:${env.PATH}"
     }
@@ -369,7 +369,7 @@ aws ecs create-cluster --cluster-name to-do-app
 	"networkMode": "awsvpc",
 	"containerDefinitions": [{
 		"name": "to-do-app",
-		"image": "<aws-account-id>.dkr.ecr.us-east-1.amazonaws.com/clarusway/to-do-app:latest",
+		"image": "593737455453.dkr.ecr.us-east-1.amazonaws.com/clarusway/to-do-app:latest",
 		"portMappings": [{
 			"containerPort": 3000,
 			"protocol": "tcp"
@@ -381,7 +381,7 @@ aws ecs create-cluster --cluster-name to-do-app
 	],
 	"cpu": "256",
 	"memory": "512",
-        "executionRoleArn": "arn:aws:iam::<aws-account-id>:role/ecsTaskExecutionRole"
+        "executionRoleArn": "arn:aws:iam::593737455453:role/ecsTaskExecutionRole"
 }
 ```
 
