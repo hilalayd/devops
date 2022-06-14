@@ -181,7 +181,7 @@ Press "i" to edit
 pipeline {
     agent any
     environment {
-        ECR_REGISTRY = "<aws_account_id>.dkr.ecr.us-east-1.amazonaws.com"
+        ECR_REGISTRY = "593737455453.dkr.ecr.us-east-1.amazonaws.com/clarusway/to-do-app"
         APP_REPO_NAME= "clarusway/to-do-app"
     }
     stages {

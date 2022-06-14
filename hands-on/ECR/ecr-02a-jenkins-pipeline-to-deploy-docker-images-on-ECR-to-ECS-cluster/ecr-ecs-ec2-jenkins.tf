@@ -20,7 +20,7 @@ data "aws_caller_identity" "current" {}
 locals {
   github-email = "hilalsyn@gmail.com"                      # you need to change this line
   github-username = "hilalayd"                              # you need to change this line
-  github-token = ""      # you need to change this line
+  github-token = "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"      # you need to change this line
   key_pair="firstkey"            # you need to change this line
   pem_key_address = "~/Downloads/firstkey.pem"              # you need to change this line
 }
